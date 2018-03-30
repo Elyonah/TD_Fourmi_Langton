@@ -83,31 +83,47 @@ class Pattern {
     }
     editCurrentPattern(){
         var tbody = $("#CurrentPattern tbody");
+        var alreadyfind = [];
         $(event.target).parent().parent().nextAll('tr').remove();
         if($(event.target).val() !== "#FFFFFF"){
-            
             var addRow = {
                 if: $(event.target).val(),
-                then: {
-                    color: "#FFFFFF",
-                    direction: "left"
+                    then: {
+                        color: "#FFFFFF",
+                        direction: "left"
+                    }
                 }
-            }
-            $.each($('#CurrentPattern tbody tr'), function(i, element){
-                if($(event.target).val() === $(element).data('if-color') && $(event.target).val !== "#FFFFFF"){
-                    $(element).children('td.if-color').css('color', 'red').css('font-weight', '600')
-                    $("#Start, #MoveForward").attr('disabled', "disabled")
-                }else{
+
+                $.each($('#CurrentPattern tbody tr'), function(i, element){
+                    if($(event.target).val() === $(element).data('if-color') && $(event.target).val() !== "#FFFFFF"){
+                        $(element).children('td.if-color').css('color', 'red').css('font-weight', '600')
+                        alreadyfind.push(true)
+                    }else{
+                        $(element).children('td.if-color').css('color', 'initial').css('font-weight', '400')
+                        console.log("ROW OK")
+                        alreadyfind.push(false)
+                    }
+                })
+
+                tbody.append(Pattern.GetHtmlRow(addRow));
+                $("td.then-color select").on("change", $.proxy(this.editCurrentPattern, this))
+            }else{
+                $.each($('#CurrentPattern tbody tr'), function(i, element){
                     $(element).children('td.if-color').css('color', 'initial').css('font-weight', '400')
-                    $("#Start, #MoveForward").removeAttr('disabled')
-                }
-            })
+                    alreadyfind.push(false)
+                })
+            }
+
+            //Vérification de doublon
+            if(alreadyfind.includes(true)){
+                $("#Start, #MoveForward, #Pattern").attr('disabled', "disabled")
+            }else{
+                $("#Start, #MoveForward, #Pattern").removeAttr('disabled')
+            }
             
-            tbody.append(Pattern.GetHtmlRow(addRow));
-            $("td.then-color select").on("change", $.proxy(this.editCurrentPattern, this))
+            langton.Reset()
         }
-        langton.Reset()
-    }
+    
 }
 
 const PatternColor = Object.freeze({
