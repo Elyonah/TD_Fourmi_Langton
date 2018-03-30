@@ -1,14 +1,18 @@
 # TD_Fourmi_Langton
 TD sur la fourmi de Langton
-Cours de JQUERY / AJAX - M2 Ingésup mars 2018
+Cours de JQUERY / AJAX - M2 IngÃ©sup mars 2018
+
+Notes :
+Je n'ai pas trouvÃ© trÃ¨s pertinant d'utiliser le fichier simulation.js, pour moi le code Ã©tait suffisamment claire.
+
 
 I. Observations :
 
-Au début, la fourmi suit un schéma assez régulier et symétrique, puis après se lance dans des directions assez chaotiques.
-Au bout d'un long moment, le pattern de la fourmi redevient régulier et suit un schéma fixe qui la fait se diriger à l'infini dans une direction unique.
+Au dÃ©but, la fourmi suit un schÃ©ma assez rÃ©gulier et symÃ©trique, puis aprÃ¨s se lance dans des directions assez chaotiques.
+Au bout d'un long moment, le pattern de la fourmi redevient rÃ©gulier et suit un schÃ©ma fixe qui la fait se diriger Ã  l'infini dans une direction unique.
 (https://puu.sh/zStBL/56d8c5aefd.png)
 
 II. Observations :
 
-Sur un pattern simple, au bout de plus de 10000 tours, je suis arrivée dans l'état infini. 
-J'ai réitéré l'expérience avec le pattern Inondation de base, mais j'avoue que je n'ai pas eu la patience d'attendre que l'évènement se produise, bien que je sois sûre qu'il se serait produit au bout d'un moment.
+Sur un pattern simple, au bout de plus de 10000 tours, je suis arrivÃ©e dans l'Ã©tat infini. 
+J'ai rÃ©itÃ©rÃ© l'expÃ©rience avec le pattern Inondation de base, mais j'avoue que je n'ai pas eu la patience d'attendre que l'Ã©vÃ¨nement se produise, bien que je sois sÃ»re qu'il se serait produit au bout d'un moment.
